@@ -14,7 +14,7 @@
 │                                                                     │
 │   dev.to/t/webdev?page=1..3                                         │
 │          │                                                          │
-│   scraper.py  ──►  requests + BeautifulSoup                        │
+│   scraper.py  ──►  requests + BeautifulSoup                         │
 │          │         • Paginates through 3 archive pages              │
 │          │         • Extracts: title, author, date, content         │
 │          ▼                                                          │
@@ -31,7 +31,7 @@
 │          ▼                                                          │
 │   cleaned_articles.json                                             │
 │          │                                                          │
-│   summarizer.py  ──►  Ollama (llama3.2) on localhost:11434         │
+│   summarizer.py  ──►  Ollama (llama3.2) on localhost:11434          │
 │          │  • Sends article title + content to local LLM            │
 │          │  • Receives: 50-word summary + 3 category tags           │
 │          │  • JSON repair for truncated responses                   │
@@ -42,7 +42,7 @@
 ┌────────────────────────────▼────────────────────────────────────────┐
 │                         LOAD (Phase 4)                              │
 │                                                                     │
-│   sheets_uploader.py  ──►  gspread + Google Sheets API             │
+│   sheets_uploader.py  ──►  gspread + Google Sheets API              │
 │          │  • Authenticates via Service Account (credentials.json)  │
 │          │  • Writes header row with formatting                     │
 │          │  • Deduplicates against existing rows                    │
@@ -59,21 +59,21 @@
 ```
 Automated Tech-News-to-Google-Sheets Pipeline/
 │
-├── scraper.py               # Phase 1 — Pagination scraper
-├── normalizer.py            # Phase 2 — HTML cleaner & date normalizer
-├── summarizer.py            # Phase 3 — Local LLM summarization (Ollama)
-├── sheets_uploader.py       # Phase 4 — Google Sheets integration
+├── scraper.py               # Pagination scraper
+├── normalizer.py            # HTML cleaner & date normalizer
+├── summarizer.py            # Local LLM summarization (Ollama)
+├── sheets_uploader.py       # Google Sheets integration
 │
-├── credentials.json         # ⚠️ Google Service Account key (DO NOT COMMIT)
+├── credentials.json         # Google Service Account key
 │
-├── raw_articles.json        # Intermediate — raw scraped data
-├── cleaned_articles.json    # Intermediate — normalized data
-├── summarized_articles.json # Intermediate — LLM-enriched data
+├── raw_articles.json        # raw scraped data
+├── cleaned_articles.json    # normalized data
+├── summarized_articles.json # LLM-enriched data
 │
 └── README.md
 ```
 
-> ⚠️ **Never commit `credentials.json` to GitHub.** Add it to `.gitignore` immediately.
+
 
 ---
 
